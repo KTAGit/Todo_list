@@ -1,1 +1,2 @@
-console.log("webpack")
+import "./logic.js"
+import "./styles.css"

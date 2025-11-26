@@ -41,7 +41,5 @@ function storeTodo(todo) {
 const pro1 = new ProjectCreator("Personal")
 const todo1 = new TodoCreator("Do homework", "Math homework needs to be completed", "8/5/2025", "High", pro1.id)
 
+storeProject(pro1)
 storeTodo(todo1)
-
-console.log(todoStorage)
-

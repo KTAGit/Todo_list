@@ -1,3 +1,5 @@
 import "./logic.js"
 import "./styles.css"
-import "./renderDOM.js"
+import "./renderPorject.js"
+import "./projectController.js"
+import "./taskController.js"

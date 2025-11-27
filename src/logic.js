@@ -27,19 +27,12 @@ export class TodoCreator {
 
 
 // Adds a new project object to the projectStorage array.
-function storeProject(project) {
+export function storeProject(project) {
     projectStorage.push(project)
 }
 
 
 // Adds a new todo item to the todoStorage array.
-function storeTodo(todo) {
+export function storeTodo(todo) {
     todoStorage.push(todo)
 }
-
-
-const pro1 = new ProjectCreator("Personal")
-const todo1 = new TodoCreator("Do homework", "Math homework needs to be completed", "8/5/2025", "High", pro1.id)
-
-storeProject(pro1)
-storeTodo(todo1)

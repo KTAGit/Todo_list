@@ -1,6 +1,6 @@
 import { ProjectCreator } from "./logic";
 import { storeProject } from "./logic";
-import { renderProjectELement } from "./renderPorject";
+import { renderProjects } from "./renderProject";
  
 // Set up the input handler: on click, create a new project, store it, 
 // and re-render the project list
@@ -12,7 +12,7 @@ function getUserInput() {
         const userProject = new ProjectCreator(userInput.value)
         storeProject(userProject)
         userInput.value = ""
-        renderProjectELement()
+        renderProjects()
     })
 }
 

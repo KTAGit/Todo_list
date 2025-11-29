@@ -10,7 +10,7 @@ export function createProjectElement(project) {
 }
 
 // Render all projects from storage into the project container.
-export function renderProjectELement() {
+export function renderProjects() {
     const projectContainer = document.querySelector(".project-item-container")
     projectContainer.textContent = ""
     

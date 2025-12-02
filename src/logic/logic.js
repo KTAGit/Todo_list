@@ -22,6 +22,7 @@ export class TodoCreator {
         this.priority = priority
         this.status = status
         this.parentID = parentID
+        this.id = crypto.randomUUID()
     }
 }
 

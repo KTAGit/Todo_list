@@ -208,12 +208,6 @@ body {
     border: 1px solid #a9ada6a3;
 } 
 
-.todo-arrow-point {
-    color: #d4d4d4e4;
-    align-self: center;
-    font-size: 25px;
-}
-
 .chevron-right {
     align-self: center;
     border-style: solid;

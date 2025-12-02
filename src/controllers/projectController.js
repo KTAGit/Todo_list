@@ -1,6 +1,6 @@
-import { ProjectCreator } from "./logic";
-import { storeProject } from "./logic";
-import { renderProjects } from "./renderProject";
+import { ProjectCreator } from "../logic/logic";
+import { storeProject } from "../logic/logic";
+import { renderProjects } from "../ui/renderProject";
  
 // Set up the input handler: on click, create a new project, store it, 
 // and re-render the project list

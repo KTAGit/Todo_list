@@ -1,6 +1,6 @@
-import { TodoCreator } from "./logic";
-import { storeTodo } from "./logic";
-import { renderTodos } from "./renderTodo";  
+import { TodoCreator } from "../logic/logic";
+import { storeTodo } from "../logic/logic";
+import { renderTodos } from "../ui/renderTodo";  
 
 // Set up the input handler: on click, create a new todo, store it, 
 // and re-render the todo list

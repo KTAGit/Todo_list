@@ -1,4 +1,4 @@
-import { projectStorage } from "./logic";
+import { projectStorage } from "../logic/logic";
 
 
 // Create and return a project <div> element with the appropriate class and text content.

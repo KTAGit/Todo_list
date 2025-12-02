@@ -1,4 +1,4 @@
-import { todoStorage } from "./logic";
+import { todoStorage } from "../logic/logic";
 
 
 // Create and return a todo <div> element with the appropriate class and text content.
@@ -6,6 +6,7 @@ export function createTodoElement(todo) {
     const div = document.createElement("div")
     div.className = "todo-item"
     div.textContent = todo.title
+    div.dataset.id = todo.id
     return div
 }
 

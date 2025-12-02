@@ -18,10 +18,14 @@ export function renderTodos() {
         const element = createTodoElement(todo)
         const todoAndBtnContainer = document.createElement("div")
         const todoCompleteButton = document.createElement("div")
+        const arrowPoint = document.createElement("div")
         todoAndBtnContainer.classList.add("todo-and-btn-container")
         todoCompleteButton.classList.add("todo-complete-btn") 
+        arrowPoint.classList.add("chevron-right") 
+        arrowPoint.textContent = ""
         todoAndBtnContainer.appendChild(todoCompleteButton)
         todoAndBtnContainer.appendChild(element)
+        todoAndBtnContainer.appendChild(arrowPoint)
         todoContainer.appendChild(todoAndBtnContainer)
     } )
 }   

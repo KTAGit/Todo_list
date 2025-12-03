@@ -15,13 +15,13 @@ export const todoStorage = []
 
 // Represents a todo item assigned to a specific project.
 export class TodoCreator {
-    constructor( title, description, duedate, priority, status, parentID ) {
+    constructor( title, description, duedate, priority, status, projectID ) {
         this.title = title
         this.description = description
         this.duedate = duedate
         this.priority = priority
         this.status = status
-        this.parentID = parentID
+        this.projectID = projectID
         this.id = crypto.randomUUID()
     }
 }

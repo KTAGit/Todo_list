@@ -1,13 +1,13 @@
 import { TodoCreator } from "../logic/logic";
 import { todoStorage } from "../logic/logic";
+import { renderTask } from "../ui/renderTask";
 
 
-
-function getUserTask() {
+export function getUserTask() {
 
     document.addEventListener("click", e => {
         if (e.target.matches(".todo-item")) {
-            console.log(e.target.dataset.id)
+           renderTask(e.target.dataset.id)
         }
     })
 

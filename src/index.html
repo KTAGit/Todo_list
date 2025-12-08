@@ -59,6 +59,51 @@
                 <div class="task-description-container"></div>
 
             </div>
+
+            <div class="task-settings">
+
+                <div class="task priority-container" >
+                    <div class="label-container">
+                        <label for="priority" class="label">Priority</label>
+                    </div>
+                    
+                    <select name="priority" id="task-priority">
+                        <option value="High">High Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="Low">Low Priority</option>
+                    </select>
+                    
+                </div>
+
+                <div class="task duedate-container">
+                    <div class="label-container">
+                        <label for="date-field-name" class="label">Due date</label>
+                    </div>
+                    
+                    <input type="date" name="date-field-name" id="task-duedate">
+
+                </div>
+
+                <div class="task status-container">
+                    <div class="label-container">
+                        <label for="Status" class="label">Status</label>
+                    </div>
+                    
+                    <select name="Status" id="task-status">
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                    
+                </div>
+
+                
+            </div>
+
+            <div class="btn-container">
+                <button class="delete-btn">Delete Task</button>
+                <button class="save-changes-btn">Save changes</button>
+            </div>
         </section>
 
     </div>

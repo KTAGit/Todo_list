@@ -16,7 +16,7 @@ body {
 .sidebar.sidebar--left {
     align-self: center;
     background-color: #1C1C1C;
-    height: 96%;
+    min-height: 96vh;
     border-radius: 20px;
 }
 
@@ -184,7 +184,7 @@ body {
     width: 90%;
     height: 50px;
     justify-content: center;
-    border-bottom: 1px solid #79827232;;
+    border-bottom: 1px solid #79827232;
 }
 
 .todo-and-btn-container:hover {
@@ -221,10 +221,12 @@ body {
 }
 
 .task-section-container {
+    display: flex;
     background-color: #1C1C1C;
     align-self: center;
-    height: 96%;
+    min-height: 96vh;
     border-radius: 20px;
+    flex-direction: column;
 }
 
 .task-header {
@@ -242,7 +244,7 @@ body {
 
 .task-title {
     padding-left: 15px;
-    width: 470px;
+    width: 90%;
     height: 40px;
     font-size: 16px;
     border: 1px solid #79827265;
@@ -258,6 +260,7 @@ body {
 }
 
 .task-description-container {
+    margin-top: 15px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -265,8 +268,9 @@ body {
 
 .task-description {
     padding-left: 15px;
-    width: 470px;
-    height: 400px;
+    padding-top: 10px;
+    width: 90%;
+    height: 200px;
     font-size: 16px;
     border: 1px solid #79827265;
     border-radius: 5px;
@@ -274,9 +278,130 @@ body {
     background-color: #1C1C1C;
     color: #d7d7d7;
     resize: none;
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: #888 #79827265;
+    line-height: 25px;
 }
 
 .task-description:focus {
     outline: none;
     box-shadow: none; 
+}
+
+.task-settings {
+    margin-top: 20px;
+    width: 100%;
+    display: none;
+    
+}
+
+.task-settings .task {
+    display: flex;
+    margin-top: 15px;
+    width: 93%;
+    justify-self: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #d7d7d7;
+    background-color: #1C1C1C;
+}
+
+.task-settings .task .label-container {
+    min-width: 130px;
+    font-size: 16px;
+
+}
+
+#task-priority {
+    width: 135px;
+    height: 30px;
+    background-color: #1C1C1C;
+    color: #d7d7d7a8;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    border: 1px solid #79827265;
+}
+
+#task-priority:focus {
+    outline: none;
+    box-shadow: none; 
+}
+
+
+#task-duedate {
+    width: 135px;
+    height: 30px;
+    background-color: #1C1C1C;
+    color: #d7d7d7a8;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    border: 1px solid #79827265;
+}
+
+#task-duedate:focus {
+    outline: none;
+    box-shadow: none; 
+}
+
+#task-status {
+    width: 135px;
+    height: 30px;
+    background-color: #1C1C1C;
+    color: #d7d7d7a8;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    border: 1px solid #79827265;
+}   
+
+#task-priority:focus {
+    outline: none;
+    box-shadow: none; 
+}
+
+.btn-container {
+    height: 50px;
+    width: 100%;
+    display: none;
+    margin-top: auto;
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+}
+
+.delete-btn {
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 900;
+    background-color: #1C1C1C;
+    color: #d7d7d7;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid #79827265;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.save-changes-btn {
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 900;
+    background-color: #804f00;
+    color: #d7d7d7;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid #804f00;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
+    border: 1px solid #798272f0;
+}
+
+
+.save-changes-btn:hover {
+    cursor: pointer;
+    border: 1px solid #c47a03;
 }

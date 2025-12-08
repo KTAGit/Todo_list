@@ -41,11 +41,14 @@ export function renderTask(id) {
         if (todo.id === id) {
             const titleContainer = document.querySelector(".task-title-container")
             const descriptionContainer = document.querySelector(".task-description-container")
+            const taskSettings = document.querySelector(".task-settings")
+            const buttonContainer = document.querySelector(".btn-container")
+            buttonContainer.style.display = "flex"
+            taskSettings.style.display = "block"
             titleContainer.innerHTML = ""
             descriptionContainer.innerHTML = ""
             titleContainer.appendChild(createTitleElement(todo))
             descriptionContainer.appendChild(createDescriptionElement(todo))  
-            console.log(`Here is the title: ${ todo.title }`)
         }
     })
 }

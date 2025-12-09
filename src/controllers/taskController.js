@@ -1,6 +1,7 @@
 import { TodoCreator } from "../logic/logic";
 import { todoStorage } from "../logic/logic";
 import { renderTask } from "../ui/renderTask";
+import { updateTodoTitle } from "../ui/renderTodo"; 
 
 
 export function getUserTask() {
@@ -14,5 +15,34 @@ export function getUserTask() {
     
 }
 
+export function updateUserSettings() {
+    const saveChangesbtn = document.querySelector(".save-changes-btn")
+    saveChangesbtn.addEventListener("click", () => {
+        const currentTodoId = document.querySelector(".task-section-container").dataset.id
+        const taskTitle = document.querySelector(".task-title").value
+        const taskDescription = document.querySelector(".task-description").value
+        const priorityValue = document.querySelector("#task-priority").value
+        const dueDateValue = document.querySelector("#task-duedate").value
+        const statusValue = document.querySelector("#task-status").value
+        todoStorage.forEach(todo => {
+            if (todo.id === currentTodoId) {
+                if (todo.title !== taskTitle) {
+                    todo.title = taskTitle
+                    updateTodoTitle(currentTodoId)
+                    
+                }
+                todo.description = taskDescription
+                todo.priority = priorityValue
+                todo.duedate = dueDateValue
+                todo.status = statusValue
+            }
+        })
+        
+
+    })
+    
+
+}
+updateUserSettings()
 
 getUserTask()

@@ -30,3 +30,20 @@ export function renderTodos() {
         todoContainer.appendChild(todoAndBtnContainer)
     } )
 }   
+
+export function updateTodoTitle(id) {
+    const todos = document.querySelectorAll(".todo-item")
+    for (const element of todos) {
+        console.log("First loop")
+        if (element.dataset.id === id) {
+            for (const todo of todoStorage) {
+                console.log("Second loop")
+                if (todo.id === id) {
+                    console.log("Inside if")
+                    console.log(todo.title)
+                    element.textContent = todo.title
+                }
+            }   
+        }
+    }
+}

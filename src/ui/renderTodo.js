@@ -34,16 +34,28 @@ export function renderTodos() {
 export function updateTodoTitle(id) {
     const todos = document.querySelectorAll(".todo-item")
     for (const element of todos) {
-        console.log("First loop")
         if (element.dataset.id === id) {
-            for (const todo of todoStorage) {
-                console.log("Second loop")
-                if (todo.id === id) {
-                    console.log("Inside if")
-                    console.log(todo.title)
+            for (const todo of todoStorage) {   
+                if (todo.id === id) {      
                     element.textContent = todo.title
                 }
             }   
         }
     }
+}
+
+export function highlightTodo(id) {
+    const todoItems = document.querySelectorAll(".todo-item")
+
+    todoItems.forEach(todo => {
+        
+        const container = todo.parentElement
+        if (id === todo.dataset.id) {
+            
+            console.log(`${id} AND ${todo.dataset.id}`)
+            container.classList.add("selected")
+        }else {
+            container.classList.remove("selected")
+        }
+    })
 }

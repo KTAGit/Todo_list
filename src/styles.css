@@ -177,6 +177,11 @@ body {
     padding-left: 20px;
 }
 
+.selected {
+    background-color: #cecece13;
+    color: #e0e0e0;
+    border-radius: 10px;
+}
 
 .todo-and-btn-container {
     display: flex;
@@ -373,7 +378,7 @@ body {
     font-size: 16px;
     font-weight: 900;
     background-color: #1C1C1C;
-    color: #d7d7d7;
+    color: #ffffff;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border: 1px solid #79827265;
     border-radius: 5px;
@@ -397,11 +402,21 @@ body {
 
 .delete-btn:hover {
     cursor: pointer;
-    border: 1px solid #798272f0;
+    border: 1px solid #79827265;
+    background-color: #DA3633;
+    color: white;
 }
 
+.delete-btn:active {
+    background-color: #ff5653;
+}
 
 .save-changes-btn:hover {
     cursor: pointer;
     border: 1px solid #c47a03;
+}
+
+.save-changes-btn:active {
+    cursor: pointer;
+    background-color:  #d68503;
 }

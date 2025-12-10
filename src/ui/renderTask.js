@@ -11,7 +11,7 @@ function createTitleElement(todo) {
 function createDescriptionElement(todo) {
     const textarea = document.createElement("textarea")
     textarea.classList.add("task-description")
-    todo.description == undefined ? textarea.placeholder = "Description" : textarea.value = todo.description
+    todo.description == undefined || todo.description == "" ? textarea.placeholder = "Description" : textarea.value = todo.description
     return textarea
 }
 

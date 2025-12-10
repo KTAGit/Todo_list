@@ -1,14 +1,17 @@
 import { TodoCreator } from "../logic/logic";
 import { todoStorage } from "../logic/logic";
 import { renderTask } from "../ui/renderTask";
-import { updateTodoTitle } from "../ui/renderTodo"; 
+import { updateTodoTitle } from "../ui/renderTodo";
+import { highlightTodo } from "../ui/renderTodo"; 
 
 
 export function getUserTask() {
 
     document.addEventListener("click", e => {
         if (e.target.matches(".todo-item")) {
-           renderTask(e.target.dataset.id)
+            highlightTodo(e.target.dataset.id)
+            console.log(e.target)
+            renderTask(e.target.dataset.id)
         }
     })
 
@@ -37,11 +40,17 @@ export function updateUserSettings() {
                 todo.status = statusValue
             }
         })
-        
 
+        saveChangesbtn.textContent = "Saving..."
+        setTimeout(() => {
+            saveChangesbtn.textContent = "Saved ✅"
+            setTimeout(() => {
+                saveChangesbtn.textContent = "Save changes"
+            }, 3000)
+        }, 1000)  
+        
     })
     
-
 }
 updateUserSettings()
 

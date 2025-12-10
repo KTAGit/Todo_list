@@ -10,7 +10,6 @@ export function getUserTask() {
     document.addEventListener("click", e => {
         if (e.target.matches(".todo-item")) {
             highlightTodo(e.target.dataset.id)
-            console.log(e.target)
             renderTask(e.target.dataset.id)
         }
     })
@@ -40,7 +39,6 @@ export function updateUserSettings() {
                 todo.status = statusValue
             }
         })
-
         saveChangesbtn.textContent = "Saving..."
         setTimeout(() => {
             saveChangesbtn.textContent = "Saved ✅"

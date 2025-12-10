@@ -1,19 +1,21 @@
 import { TodoCreator } from "../logic/logic";
 import { storeTodo } from "../logic/logic";
 import { renderTodos } from "../ui/renderTodo";  
+import { activeProjectID } from "./projectController";
 
-// Set up the input handler: on click, create a new todo, store it, 
-// and re-render the todo list
-function getUserTodo() {
-    const userInput = document.querySelector(".todo-input")
-    const addButton = document.querySelector(".task.Add-symbol")
-    addButton.addEventListener("click", () => {
-        if (userInput.value === "") { return }
-        const userTodo = new TodoCreator(userInput.value)
-        storeTodo(userTodo)
-        userInput.value = ""
-        renderTodos()
-    })
+// Creates a new todo for a project and saves it to storage
+export function addTodoToStorage(projectID, text) {
+    const newTodo = new TodoCreator(text);
+    newTodo.projectID = projectID;
+    storeTodo(newTodo);
 }
 
-getUserTodo()
+// When the Add button is clicked, create a todo for the active project and re-render
+document.querySelector(".task.Add-symbol").addEventListener("click", () => {
+    const input = document.querySelector(".todo-input");
+    if (!input.value || !activeProjectID) return;
+
+    addTodoToStorage(activeProjectID, input.value);
+    input.value = "";
+    renderTodos(activeProjectID);
+});

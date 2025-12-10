@@ -10,27 +10,31 @@ export function createTodoElement(todo) {
     return div
 }
 
-// Render all todo from storage into the todo container.
-export function renderTodos() {
-    const todoContainer = document.querySelector(".todo-item-container")
-    todoContainer.innerHTML = ""
-    
-    todoStorage.forEach( todo => {
-        const element = createTodoElement(todo)
-        const todoAndBtnContainer = document.createElement("div")
-        const todoCompleteButton = document.createElement("div")
-        const arrowPoint = document.createElement("div")
-        todoAndBtnContainer.classList.add("todo-and-btn-container")
-        todoCompleteButton.classList.add("todo-complete-btn") 
-        arrowPoint.classList.add("chevron-right") 
-        arrowPoint.textContent = ""
-        todoAndBtnContainer.appendChild(todoCompleteButton)
-        todoAndBtnContainer.appendChild(element)
-        todoAndBtnContainer.appendChild(arrowPoint)
-        todoContainer.appendChild(todoAndBtnContainer)
-    } )
-}   
+// Renders all todos belonging to the given project ID
+export function renderTodos(projectID) {
+    const container = document.querySelector(".todo-item-container");
+    container.innerHTML = "";
 
+    todoStorage.forEach(todo => {
+        if (todo.projectID === projectID) {
+            const element = createTodoElement(todo);
+
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("todo-and-btn-container");
+
+            const completeBtn = document.createElement("div");
+            completeBtn.classList.add("todo-complete-btn");
+
+            const arrow = document.createElement("div");
+            arrow.classList.add("chevron-right");
+
+            wrapper.append(completeBtn, element, arrow);
+            container.appendChild(wrapper);
+        }
+    });
+} 
+
+// Updates the displayed title for the todo with the specified ID
 export function updateTodoTitle(id) {
     const todos = document.querySelectorAll(".todo-item")
     for (const element of todos) {
@@ -44,15 +48,13 @@ export function updateTodoTitle(id) {
     }
 }
 
+// Highlights the selected todo for visual feedback by adding a CSS class
 export function highlightTodo(id) {
     const todoItems = document.querySelectorAll(".todo-item")
 
     todoItems.forEach(todo => {
-        
         const container = todo.parentElement
         if (id === todo.dataset.id) {
-            
-            console.log(`${id} AND ${todo.dataset.id}`)
             container.classList.add("selected")
         }else {
             container.classList.remove("selected")

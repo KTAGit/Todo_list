@@ -6,6 +6,7 @@ export function createProjectElement(project) {
     const div = document.createElement("div")
     div.className = "project-item"
     div.textContent = project.name
+    div.dataset.id = project.id
     return div
 }
 

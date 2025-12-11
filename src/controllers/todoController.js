@@ -13,9 +13,17 @@ export function addTodoToStorage(projectID, text) {
 // When the Add button is clicked, create a todo for the active project and re-render
 document.querySelector(".task.Add-symbol").addEventListener("click", () => {
     const input = document.querySelector(".todo-input");
+    const trimmedInput = input.value.trim()
     if (!input.value || !activeProjectID) return;
-
-    addTodoToStorage(activeProjectID, input.value);
+    if (trimmedInput.length === 0) return;
+    addTodoToStorage(activeProjectID, trimmedInput);
     input.value = "";
     renderTodos(activeProjectID);
 });
+
+// When the Enter key pressed trigger click to the add button
+document.querySelector(".todo-input").addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            document.querySelector(".task.Add-symbol").click()
+        }
+    })

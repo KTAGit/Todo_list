@@ -1,6 +1,6 @@
 import { todoStorage } from "../logic/logic";
 
-
+// Creates an input element for the task title and sets its value from the todo
 function createTitleElement(todo) {
     const input = document.createElement("input")
     input.classList.add("task-title")
@@ -8,6 +8,7 @@ function createTitleElement(todo) {
     return input
 }
 
+// Creates a textarea element for the task description, using a placeholder if empty
 function createDescriptionElement(todo) {
     const textarea = document.createElement("textarea")
     textarea.classList.add("task-description")
@@ -15,6 +16,7 @@ function createDescriptionElement(todo) {
     return textarea
 }
 
+// Renders the task details for the selected todo into the task section UI
 export function renderTask(id) {
     todoStorage.forEach(todo => {
         if (todo.id === id) {

@@ -1,5 +1,3 @@
-
-
 export const projectStorage = []
 export const todoStorage = [] 
 

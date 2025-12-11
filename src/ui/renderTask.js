@@ -20,13 +20,16 @@ function createDescriptionElement(todo) {
 export function renderTask(id) {
     todoStorage.forEach(todo => {
         if (todo.id === id) {
-            const taskSectionContainerId = document.querySelector(".task-section-container")
+            const mainContainer = document.querySelector(".main-container")
+            const taskSectionContainer = document.querySelector(".task-section-container")
             const titleContainer = document.querySelector(".task-title-container")
             const descriptionContainer = document.querySelector(".task-description-container")
             const taskSettings = document.querySelector(".task-settings")
             const buttonContainer = document.querySelector(".btn-container")
             
-            taskSectionContainerId.dataset.id = id
+            mainContainer.classList.add("show-third")
+            taskSectionContainer.classList.add("show-task")
+            taskSectionContainer.dataset.id = id
             buttonContainer.style.display = "flex"
             taskSettings.style.display = "block"
             titleContainer.innerHTML = ""
@@ -45,7 +48,6 @@ export function renderTask(id) {
                 document.querySelector("#task-duedate").value = "";
             }
             
-
             if (todo.status !== undefined) {
                 document.querySelector("#task-status").value = todo.status;
             }else {
@@ -55,5 +57,11 @@ export function renderTask(id) {
     })
 }
 
+ export function hideTaskSection() {
+    const mainContainer = document.querySelector(".main-container")
+    const taskSectionContainer = document.querySelector(".task-section-container")
 
+    mainContainer.classList.remove("show-third")
+    taskSectionContainer.classList.remove("show-task")
+}
 

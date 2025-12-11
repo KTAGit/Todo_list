@@ -8,9 +8,13 @@ body {
     height: 100%;
     width: 97%;
     display: grid;
-    grid-template-columns: minmax(300px, .8fr) 2fr 1fr;
+    grid-template-columns: minmax(300px, .8fr) 2fr;
     grid-gap: 15px;
     justify-self: center;
+}
+
+.show-third {
+    grid-template-columns: minmax(300px, .8fr) 2fr 1fr;
 }
 
 .sidebar.sidebar--left {
@@ -230,12 +234,16 @@ body {
 }
 
 .task-section-container {
-    display: flex;
+    display: none;
     background-color: #1C1C1C;
     align-self: center;
     min-height: 96vh;
     border-radius: 20px;
     flex-direction: column;
+}
+
+.show-task {
+    display: flex;
 }
 
 .task-header {

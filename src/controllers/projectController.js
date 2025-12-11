@@ -2,6 +2,7 @@ import { ProjectCreator } from "../logic/logic";
 import { storeProject } from "../logic/logic";
 import { renderProjects } from "../ui/renderProject";
 import { renderTodos } from "../ui/renderTodo";
+import { highlightProject } from "../ui/renderProject";
  
 // Set up the input handler: on click, create a new project, store it, 
 // and re-render the project list
@@ -30,6 +31,7 @@ export let activeProjectID = null
 document.addEventListener("click", e => {
     if (e.target.matches(".project-item")) {
         activeProjectID = e.target.dataset.id;
+        highlightProject(activeProjectID)
         renderTodos(activeProjectID);
     }
 });

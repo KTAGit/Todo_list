@@ -21,4 +21,17 @@ export function renderProjects() {
     } )
 }   
 
+// Highlights the selected Project for visual feedback and sets the project title
+export function highlightProject(id) {
+    const projectItem = document.querySelectorAll(".project-item")
+    const projectTitle = document.querySelector(".main.todo-title")
+    projectItem.forEach(project => {       
+        if (id === project.dataset.id) {
+            project.classList.add("selected")
+            projectTitle.textContent = project.textContent
+        }else {
+            project.classList.remove("selected")
+        }
+    })
+}
 

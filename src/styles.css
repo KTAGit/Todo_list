@@ -8,13 +8,13 @@ body {
     height: 100%;
     width: 97%;
     display: grid;
-    grid-template-columns: minmax(300px, .8fr) 2fr;
+    grid-template-columns: minmax(350px, .5fr) 2fr;
     grid-gap: 15px;
     justify-self: center;
 }
 
 .show-third {
-    grid-template-columns: minmax(300px, .8fr) 2fr 1fr;
+    grid-template-columns: minmax(350px, .8fr) 2fr 1fr;
 }
 
 .sidebar.sidebar--left {
@@ -92,12 +92,34 @@ body {
     border-radius: 10px;
     padding-left: 20px;
     margin-bottom: 5px;
+    justify-content: space-between;
 }
 
 .project-item:hover {
     background-color: #cecece13;
     cursor: pointer;
     color: #e0e0e0;
+}
+
+.project-delete-btn {
+    width: 30px;
+    height: 25px;
+    align-self: center;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 0;
+    background-color: #242223;
+    border: 1px solid #798272;
+    color: #798272e6;
+    border-radius: 5px;
+    margin-right: 10px;
+    justify-content: center;
+}
+
+.project-delete-btn:hover {
+    cursor: pointer;
+    background-color: #DA3633;
+    color: white;
 }
 
 .main.todo-list-container {
@@ -107,15 +129,19 @@ body {
     justify-content: center;
 }
 
+.main.todo-title-container {
+    display: flex;
+}
+
 .main.todo-title {
     justify-self: center;
-    width: 90%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #BABABA;
     margin-top: 40px;
     margin-bottom: 30px;
     font-size: 35px;
-
+    margin-right: 10px;
+    margin-left: 65px;
 }
 
 .input-container {
@@ -440,7 +466,7 @@ body {
 .overlay {
     display: grid;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(12, 12, 12, 0.602);
     position: fixed;
     place-items: center;
 }

@@ -12,11 +12,16 @@ export function createProjectElement(project) {
 
 // Render all projects from storage into the project container.
 export function renderProjects() {
-    const projectContainer = document.querySelector(".project-item-container")
+    const projectContainer = document.querySelector(".project-item-container") 
     projectContainer.textContent = ""
     
     projectStorage.forEach( project => {
         const element = createProjectElement(project)
+        const deleteBtn = document.createElement("button")
+        deleteBtn.classList.add("project-delete-btn")
+        deleteBtn.dataset.id = project.id 
+        deleteBtn.textContent = "×"
+        element.appendChild(deleteBtn)
         projectContainer.appendChild(element)
     } )
 }   
@@ -28,7 +33,7 @@ export function highlightProject(id) {
     projectItem.forEach(project => {       
         if (id === project.dataset.id) {
             project.classList.add("selected")
-            projectTitle.textContent = project.textContent
+            projectTitle.textContent = project.textContent.slice(0, -1)
         }else {
             project.classList.remove("selected")
         }

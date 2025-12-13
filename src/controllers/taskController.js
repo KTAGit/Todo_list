@@ -2,6 +2,15 @@ import { todoStorage } from "../logic/logic";
 import { renderTask } from "../ui/renderTask";
 import { updateTodoTitle } from "../ui/renderTodo";
 import { highlightTodo } from "../ui/renderTodo"; 
+import { addTodoToStorage } from "./todoController";
+import { hideTaskSection } from "../ui/renderTask";
+import { confirmation } from "../ui/renderTask";
+import { activeProjectID } from "./projectController";
+import { renderTodos } from "../ui/renderTodo";
+
+// Tracks the currently selected Task ID and Title
+let activeTaskID = null
+let activeTaskTitle = null
 
 // Handles clicks on todo items: highlights the selected todo and renders its details
 export function getUserTask() {
@@ -10,6 +19,8 @@ export function getUserTask() {
         if (e.target.matches(".todo-item")) {
             highlightTodo(e.target.dataset.id)
             renderTask(e.target.dataset.id)
+            activeTaskID = e.target.dataset.id
+            activeTaskTitle = e.target.textContent 
         }
     })
 }
@@ -34,7 +45,6 @@ export function updateUserSettings() {
                 if (todo.title !== trimmedTitle) {
                     todo.title = trimmedTitle
                     updateTodoTitle(currentTodoId)
-                    
                 }
                 todo.description = taskDescription
                 todo.priority = priorityValue
@@ -53,6 +63,33 @@ export function updateUserSettings() {
     })
     
 }
+
+
+function deleteTask() {
+    const index = todoStorage.findIndex(t => t.id === activeTaskID)
+        if (index !== -1) {
+            todoStorage.splice(index, 1)
+        }
+        hideTaskSection()
+}
+
+document.querySelector(".delete-btn").addEventListener("click", () => {
+    confirmation(true, activeTaskTitle)
+})
+        
+document.querySelector(".yes.btn").addEventListener("click", () => {
+    deleteTask()
+    renderTodos(activeProjectID)
+    confirmation(false)
+})
+
+document.querySelector(".no.btn").addEventListener("click", () => {
+    confirmation(false)
+})
+
+
+
+
 updateUserSettings()
 
 getUserTask()

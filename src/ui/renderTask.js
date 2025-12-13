@@ -57,11 +57,27 @@ export function renderTask(id) {
     })
 }
 
+// Hides the task section 
  export function hideTaskSection() {
     const mainContainer = document.querySelector(".main-container")
     const taskSectionContainer = document.querySelector(".task-section-container")
 
     mainContainer.classList.remove("show-third")
     taskSectionContainer.classList.remove("show-task")
+}
+
+
+export function confirmation(show, item = ""){
+    const popup = document.querySelector(".confirmation-popup")
+    const text = document.querySelector(".text-content")
+    const overlay = document.querySelector(".overlay-off")
+    if (show) {
+        text.textContent = `Are you sure you want to delete\n${item} ?`
+        overlay.classList.add("overlay")
+        popup.classList.add("confirmation")
+    }else {
+        overlay.classList.remove("overlay")
+        popup.classList.remove("confirmation")
+    }
 }
 

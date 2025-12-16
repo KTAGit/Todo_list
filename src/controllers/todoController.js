@@ -3,7 +3,7 @@ import { storeTodo } from "../logic/logic";
 import { renderTodos } from "../ui/renderTodo";  
 import { activeProjectID } from "./projectController";
 import { todoStorage } from "../logic/logic";
-
+import { hideTaskSection } from "../ui/renderTask";
 // Creates a new todo for a project and saves it to storage
 export function addTodoToStorage(projectID, text) {
     const newTodo = new TodoCreator(text);
@@ -17,6 +17,7 @@ document.querySelector(".task.Add-symbol").addEventListener("click", () => {
     const trimmedInput = input.value.trim()
     if (!input.value || !activeProjectID) return;
     if (trimmedInput.length === 0) return;
+    
     addTodoToStorage(activeProjectID, trimmedInput);
     input.value = "";
     renderTodos(activeProjectID);

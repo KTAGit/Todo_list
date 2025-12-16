@@ -32,6 +32,7 @@ function getUserInput() {
 export let activeProjectID = null
 let deleteProjectTitle = null
 let deleteProjectID = null
+let isProjectToDelete = null
 
 // When a project is clicked, set it as active and render its todos
 document.addEventListener("click", e => {
@@ -48,6 +49,7 @@ document.addEventListener("click", e => {
     if (e.target.matches(".project-delete-btn")) {
         deleteProjectTitle = e.target.parentElement.textContent.slice(0, -1)
         deleteProjectID = e.target.dataset.id
+        isProjectToDelete = true
         confirmation(true, deleteProjectTitle)
     }
 });
@@ -63,11 +65,13 @@ function deleteProject() {
 
 // Delete the project and all todos associated with it
 document.querySelector(".yes.btn").addEventListener("click", () => {
+    if (!isProjectToDelete) return
     deleteProject()
     removeTodosByProjectId(deleteProjectID)
     activeProjectID = null
     renderProjects()
     confirmation(false)
+    isProjectToDelete = false
 })
 
 // Close confirmation dialog without deleting

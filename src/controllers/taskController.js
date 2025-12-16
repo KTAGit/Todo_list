@@ -11,6 +11,7 @@ import { renderTodos } from "../ui/renderTodo";
 // Tracks the currently selected Task ID and Title
 let activeTaskID = null
 let activeTaskTitle = null
+let isTaskToDelete = null
 
 // Handles clicks on todo items: highlights the selected todo and renders its details
 export function getUserTask() {
@@ -70,19 +71,22 @@ function deleteTask() {
         if (index !== -1) {
             todoStorage.splice(index, 1)
         }
-        hideTaskSection()
 }
 
 // Handle task delete button clicks and open confirmation dialog
 document.querySelector(".delete-btn").addEventListener("click", () => {
     confirmation(true, activeTaskTitle)
+    isTaskToDelete = true
 })
 
 // Delete the task and render all todos
 document.querySelector(".yes.btn").addEventListener("click", () => {
+    if (!isTaskToDelete) return
     deleteTask()
+    hideTaskSection()
     renderTodos(activeProjectID)
     confirmation(false)
+    isTaskToDelete = false
 })
 
 // Close confirmation dialog without deleting

@@ -66,7 +66,7 @@ export function renderTask(id) {
     taskSectionContainer.classList.remove("show-task")
 }
 
-
+// Toggle deletion confirmation popup visibility
 export function confirmation(show, item = ""){
     const popup = document.querySelector(".confirmation-popup")
     const text = document.querySelector(".text-content")

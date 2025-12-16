@@ -2,6 +2,7 @@ import { TodoCreator } from "../logic/logic";
 import { storeTodo } from "../logic/logic";
 import { renderTodos } from "../ui/renderTodo";  
 import { activeProjectID } from "./projectController";
+import { todoStorage } from "../logic/logic";
 
 // Creates a new todo for a project and saves it to storage
 export function addTodoToStorage(projectID, text) {
@@ -23,7 +24,17 @@ document.querySelector(".task.Add-symbol").addEventListener("click", () => {
 
 // When the Enter key pressed trigger click to the add button
 document.querySelector(".todo-input").addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            document.querySelector(".task.Add-symbol").click()
+    if (e.key === "Enter") {
+        document.querySelector(".task.Add-symbol").click()
+    }
+})
+
+// Delete all todos associated with the deleted project
+export function removeTodosByProjectId(deletedProjectID) {
+    for (let i = todoStorage.length - 1; i >= 0; i--) {
+        const todo = todoStorage[i];
+        if (todo.projectID === deletedProjectID) {
+            todoStorage.splice(i, 1)
         }
-    })
+    }
+}

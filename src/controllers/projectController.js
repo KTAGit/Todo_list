@@ -5,6 +5,8 @@ import { renderTodos } from "../ui/renderTodo";
 import { highlightProject } from "../ui/renderProject";
 import { hideTaskSection } from "../ui/renderTask";
 import { confirmation } from "../ui/renderTask";
+import { removeTodosByProjectId } from "./todoController";
+
 
 // Set up the input handler: on click, create a new project, store it, 
 // and re-render the project list
@@ -41,7 +43,7 @@ document.addEventListener("click", e => {
     }
 });
 
-
+// Handle project delete button clicks and open confirmation dialog
 document.addEventListener("click", e => {
     if (e.target.matches(".project-delete-btn")) {
         deleteProjectTitle = e.target.parentElement.textContent.slice(0, -1)
@@ -50,6 +52,7 @@ document.addEventListener("click", e => {
     }
 });
 
+// Remove the currently selected project from storage
 function deleteProject() {
     const index = projectStorage.findIndex(p => p.id === deleteProjectID)
         if (index !== -1) {
@@ -57,13 +60,17 @@ function deleteProject() {
         }
         hideTaskSection()
 }
-        
+
+// Delete the project and all todos associated with it
 document.querySelector(".yes.btn").addEventListener("click", () => {
     deleteProject()
+    removeTodosByProjectId(deleteProjectID)
+    activeProjectID = null
     renderProjects()
     confirmation(false)
 })
 
+// Close confirmation dialog without deleting
 document.querySelector(".no.btn").addEventListener("click", () => {
     confirmation(false)
 })

@@ -64,7 +64,7 @@ export function updateUserSettings() {
     
 }
 
-
+// Remove the currently active task from storage
 function deleteTask() {
     const index = todoStorage.findIndex(t => t.id === activeTaskID)
         if (index !== -1) {
@@ -73,16 +73,19 @@ function deleteTask() {
         hideTaskSection()
 }
 
+// Handle task delete button clicks and open confirmation dialog
 document.querySelector(".delete-btn").addEventListener("click", () => {
     confirmation(true, activeTaskTitle)
 })
-        
+
+// Delete the task and render all todos
 document.querySelector(".yes.btn").addEventListener("click", () => {
     deleteTask()
     renderTodos(activeProjectID)
     confirmation(false)
 })
 
+// Close confirmation dialog without deleting
 document.querySelector(".no.btn").addEventListener("click", () => {
     confirmation(false)
 })

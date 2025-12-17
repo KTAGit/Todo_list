@@ -30,6 +30,7 @@ export function renderTodos(projectID) {
 
             wrapper.append(completeBtn, element, arrow);
             container.appendChild(wrapper);
+            displayTodoSettings(todo.priority, todo.duedate, todo.status, todo.id)
         }
     });
 } 
@@ -83,7 +84,7 @@ export function displayTodoSettings(priority, duedate, status, taskID) {
 
     settingsData.forEach(data => {
         const element = document.createElement("div")
-        if (data === "" || data === "📅 ") return
+        if (data === "" || data === "📅 " || data === "📅 " + undefined) return
         if (data === "High") {element.textContent = "🟥 " + data}
         else if (data === "Medium") {element.textContent = "🟨 " + data}
         else if (data === "Low") {element.textContent = "⬜ " + data}

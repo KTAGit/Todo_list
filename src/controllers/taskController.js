@@ -17,14 +17,13 @@ let isTaskToDelete = null
 
 // Handles clicks on todo items: highlights the selected todo and renders its details
 export function getUserTask() {
-
     document.addEventListener("click", e => {
-        if (e.target.matches(".todo-item")) {
-            highlightTodo(e.target.dataset.id)
-            renderTask(e.target.dataset.id)
-            activeTaskID = e.target.dataset.id
-            activeTaskTitle = e.target.textContent 
-        }
+        const todoEl = e.target.closest(".todo-and-btn-container")
+        if (!todoEl) return
+        highlightTodo(todoEl.dataset.id)
+        renderTask(todoEl.dataset.id)
+        activeTaskID = todoEl.dataset.id
+        activeTaskTitle = todoEl.textContent 
     })
 }
 

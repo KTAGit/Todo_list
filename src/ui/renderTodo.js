@@ -21,6 +21,7 @@ export function renderTodos(projectID) {
 
             const wrapper = document.createElement("div");
             wrapper.classList.add("todo-and-btn-container");
+            wrapper.dataset.id = todo.id
 
             const completeBtn = document.createElement("div");
             completeBtn.classList.add("todo-complete-btn");
@@ -84,6 +85,7 @@ export function displayTodoSettings(priority, duedate, status, taskID) {
 
     settingsData.forEach(data => {
         const element = document.createElement("div")
+        element.classList.add("setting")
         if (data === "" || data === "📅 " || data === "📅 " + undefined) return
         if (data === "High") {element.textContent = "🟥 " + data}
         else if (data === "Medium") {element.textContent = "🟨 " + data}

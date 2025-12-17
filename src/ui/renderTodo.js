@@ -61,3 +61,61 @@ export function highlightTodo(id) {
         }
     })
 }
+
+// Remove todo DOM element matching deletedTodoID
+export function removeDeletedTodo(deletedTodoID) {
+    const todoItems = document.querySelectorAll(".todo-item")
+    todoItems.forEach(todo => {
+        if (todo.dataset.id === deletedTodoID) {
+            todo.parentElement.remove()
+        }
+    })
+}
+
+// Display or toggle the settings section for the selected todo
+export function displayTodoSettings(priority, duedate, status, taskID) {
+    
+    const settingsData = ["📅 " + duedate, status, priority]
+    const todoContainers = document.querySelectorAll(".todo-and-btn-container")
+    const todoSettingsContainer = document.createElement("div")
+    todoSettingsContainer.classList.add("todo-settings-container")
+
+
+    settingsData.forEach(data => {
+        const element = document.createElement("div")
+        if (data === "" || data === "📅 ") return
+        if (data === "High") {element.textContent = "🟥 " + data}
+        else if (data === "Medium") {element.textContent = "🟨 " + data}
+        else if (data === "Low") {element.textContent = "⬜ " + data}
+        else if (data === "Not Started") { element.textContent = " ➖ " + data}
+        else if (data === "In Progress") { element.textContent = " ⏳ " + data }
+        else if (data === "Completed") { element.textContent = " ✅ " + data }
+        else element.textContent = data
+        todoSettingsContainer.appendChild(element)
+    })
+
+    todoContainers.forEach(el => {
+        const todoID = el.querySelector(".todo-item").dataset.id
+        if (todoID === taskID) {
+            const existingSettingsContainer = el.querySelector(".todo-settings-container")
+            if (existingSettingsContainer === null) {
+                if (todoSettingsContainer.textContent === "") return
+                el.appendChild(todoSettingsContainer)
+            }else {
+                if (todoSettingsContainer.textContent === "") return
+                el.querySelector(".todo-settings-container").remove()
+                el.appendChild(todoSettingsContainer)
+            }
+        }
+    })
+}
+
+
+// Clear the todo list and reset the main project title
+export function clearTodoContainer() {
+    const todoContainer = document.querySelector(".todo-item-container")
+    const h1 = document.querySelector(".main.todo-title")
+    h1.textContent = ""
+    todoContainer.innerHTML = ""
+}
+

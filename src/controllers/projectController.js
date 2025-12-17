@@ -6,6 +6,7 @@ import { highlightProject } from "../ui/renderProject";
 import { hideTaskSection } from "../ui/renderTask";
 import { confirmation } from "../ui/renderTask";
 import { removeTodosByProjectId } from "./todoController";
+import { clearTodoContainer } from "../ui/renderTodo";
 
 
 // Set up the input handler: on click, create a new project, store it, 
@@ -70,6 +71,7 @@ document.querySelector(".yes.btn").addEventListener("click", () => {
     removeTodosByProjectId(deleteProjectID)
     activeProjectID = null
     renderProjects()
+    clearTodoContainer()
     confirmation(false)
     isProjectToDelete = false
 })

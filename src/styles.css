@@ -83,7 +83,7 @@ body {
 .project-item {
     display: flex;
     height: 40px;
-    width: 85%;
+    width: 88%;
     justify-self: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #d4d4d4e4;
@@ -171,7 +171,7 @@ body {
 }
 
 .Add-symbol {
-    width: 40px;
+    width: 50px;
     text-align: center;
     font-size: 30px;
     height: 40px;
@@ -196,17 +196,18 @@ body {
 }
 
 .todo-item {
+    grid-column: 2 / 3;
     display: flex;
-    height: 40px;
+    height: 50px;
     width: 85%;
-    justify-self: center;
+    justify-self: self-start;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #d4d4d4e4;
     font-size: 18px;
     align-items: center;
     align-self: center;
     border-radius: 5px;
-    padding-left: 20px;
+    
 
 }
 
@@ -217,11 +218,12 @@ body {
 }
 
 .todo-and-btn-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 50px 85% 10px;
     justify-self: center;
     width: 90%;
-    height: 50px;
-    justify-content: center;
+    height: max-content;
+    
     border-bottom: 1px solid #79827232;
     margin-bottom: 5px;
 }
@@ -240,6 +242,7 @@ body {
     border-radius: 5px;
     border: 1px solid #79827265;
     background-color: #161616;
+    justify-self: center;
 }
 
 .todo-complete-btn:hover {
@@ -258,6 +261,37 @@ body {
     color: #d4d4d4ad;
     margin-right: 10px;
 }
+
+.todo-settings-container{
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 35px;
+    width: 400px;
+    justify-content: space-between;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #d4d4d4e4;
+    font-size: 16px;
+    align-items: center;
+}
+
+.todo-settings-container > div {
+    width: 133px;
+    border-right: 1px solid #79827265;
+}
+
+.todo-settings-container > :nth-child(2) {
+    padding-left: 20px;
+}
+
+.todo-settings-container > :nth-child(3) {
+    padding-left: 20px;
+}
+
+.todo-settings-container > :last-child {
+    border: none;
+}
+
 
 .task-section-container {
     display: none;

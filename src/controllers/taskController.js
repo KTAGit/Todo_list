@@ -7,6 +7,8 @@ import { hideTaskSection } from "../ui/renderTask";
 import { confirmation } from "../ui/renderTask";
 import { activeProjectID } from "./projectController";
 import { renderTodos } from "../ui/renderTodo";
+import { displayTodoSettings } from "../ui/renderTodo";
+import { removeDeletedTodo } from "../ui/renderTodo";
 
 // Tracks the currently selected Task ID and Title
 let activeTaskID = null
@@ -53,6 +55,7 @@ export function updateUserSettings() {
                 todo.status = statusValue
             }
         })
+        displayTodoSettings(priorityValue, dueDateValue, statusValue, activeTaskID)
         saveChangesbtn.textContent = "Saving..."
         setTimeout(() => {
             saveChangesbtn.textContent = "Saved ✅"
@@ -84,7 +87,7 @@ document.querySelector(".yes.btn").addEventListener("click", () => {
     if (!isTaskToDelete) return
     deleteTask()
     hideTaskSection()
-    renderTodos(activeProjectID)
+    removeDeletedTodo(activeTaskID)
     confirmation(false)
     isTaskToDelete = false
 })
@@ -93,8 +96,6 @@ document.querySelector(".yes.btn").addEventListener("click", () => {
 document.querySelector(".no.btn").addEventListener("click", () => {
     confirmation(false)
 })
-
-
 
 
 updateUserSettings()

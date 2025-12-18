@@ -25,6 +25,9 @@ export function renderTodos(projectID) {
 
             const completeBtn = document.createElement("div");
             completeBtn.classList.add("todo-complete-btn");
+            if (todo.status === "Completed") {
+                completeBtn.textContent = "✓"
+            }
 
             const arrow = document.createElement("div");
             arrow.classList.add("chevron-right");
@@ -92,7 +95,7 @@ export function displayTodoSettings(priority, duedate, status, taskID) {
         else if (data === "Low") {element.textContent = "⬜ " + data}
         else if (data === "Not Started") { element.textContent = " ➖ " + data}
         else if (data === "In Progress") { element.textContent = " ⏳ " + data }
-        else if (data === "Completed") { element.textContent = " ✅ " + data }
+        else if (data === "Completed") { element.textContent = " ✓ " + data }
         else element.textContent = data
         todoSettingsContainer.appendChild(element)
     })
@@ -120,5 +123,18 @@ export function clearTodoContainer() {
     const h1 = document.querySelector(".main.todo-title")
     h1.textContent = ""
     todoContainer.innerHTML = ""
+}
+
+// Toggle completed UI state (checkmark and completed class) for a todo
+export function toggleCompleteIcon(id) {
+    const todoContainer = document.querySelector(`.todo-and-btn-container[data-id="${id}"]`)
+    if (!todoContainer) return
+
+    const completeIconContainer = todoContainer.querySelector(".todo-complete-btn")
+
+    const isCompleted = todoContainer.classList.toggle("completed");
+
+    completeIconContainer.textContent = isCompleted ? "✓" : "";
+    
 }
 

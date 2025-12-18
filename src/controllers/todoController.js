@@ -4,6 +4,8 @@ import { renderTodos } from "../ui/renderTodo";
 import { activeProjectID } from "./projectController";
 import { todoStorage } from "../logic/logic";
 import { hideTaskSection } from "../ui/renderTask";
+import { toggleCompleteIcon } from "../ui/renderTodo";
+import { displayTodoSettings } from "../ui/renderTodo";
 // Creates a new todo for a project and saves it to storage
 export function addTodoToStorage(projectID, text) {
     const newTodo = new TodoCreator(text);
@@ -39,3 +41,27 @@ export function removeTodosByProjectId(deletedProjectID) {
         }
     }
 }
+
+// Toggle completion status of a todo in storage and update its UI
+function changeTodoStatus(id){
+    todoStorage.forEach(todo => {
+        if (todo.id === id) {
+            if (!todo.status) {
+                todo.status = "Completed"
+                displayTodoSettings(todo.priority, todo.duedate, todo.status, id)
+            }else {
+                todo.status = ""
+                renderTodos(activeProjectID);
+            }
+            
+        }
+    })
+}
+
+// Handle clicks on todo completion button
+document.addEventListener("click", (e) => {
+    if (e.target.matches(".todo-complete-btn")) {
+        toggleCompleteIcon(e.target.parentElement.dataset.id)
+        changeTodoStatus(e.target.parentElement.dataset.id)
+    }
+})

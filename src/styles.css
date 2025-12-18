@@ -236,6 +236,7 @@ body {
 }
 
 .todo-complete-btn {
+    display: flex;
     align-self: center;
     height: 20px;
     width: 20px;
@@ -243,12 +244,15 @@ body {
     border: 1px solid #79827265;
     background-color: #161616;
     justify-self: center;
+    font-size: 20px;
+    color: #1F8A5B;
+    justify-content: center;
 }
 
 .todo-complete-btn:hover {
     cursor: pointer;
     border: 1px solid #a9ada6a3;
-} 
+}
 
 .chevron-right {
     align-self: center;

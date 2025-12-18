@@ -30,42 +30,46 @@ export function getUserTask() {
 // Handles saving task changes: validates input, updates the selected todo, and refreshes the UI
 export function updateUserSettings() {
     const saveChangesbtn = document.querySelector(".save-changes-btn")
-    saveChangesbtn.addEventListener("click", () => {
-        const currentTodoId = document.querySelector(".task-section-container").dataset.id
-        const taskTitle = document.querySelector(".task-title").value
-        const taskDescription = document.querySelector(".task-description").value
-        const priorityValue = document.querySelector("#task-priority").value
-        const dueDateValue = document.querySelector("#task-duedate").value
-        const statusValue = document.querySelector("#task-status").value
-        const trimmedTitle = taskTitle.trim()
-        if (trimmedTitle.length === 0) {
-            document.querySelector(".task-title").placeholder = "Title required!"
-            return
-        }
-        todoStorage.forEach(todo => {
-            if (todo.id === currentTodoId) {
-                if (todo.title !== trimmedTitle) {
-                    todo.title = trimmedTitle
-                    updateTodoTitle(currentTodoId)
-                }
-                todo.description = taskDescription
-                todo.priority = priorityValue
-                todo.duedate = dueDateValue
-                todo.status = statusValue
+    const currentTodoId = document.querySelector(".task-section-container").dataset.id
+    const taskTitle = document.querySelector(".task-title").value
+    const taskDescription = document.querySelector(".task-description").value
+    const priorityValue = document.querySelector("#task-priority").value
+    const dueDateValue = document.querySelector("#task-duedate").value
+    const statusValue = document.querySelector("#task-status").value
+    const trimmedTitle = taskTitle.trim()
+    if (trimmedTitle.length === 0) {
+        document.querySelector(".task-title").placeholder = "Title required!"
+        return
+    }
+    todoStorage.forEach(todo => {
+        if (todo.id === currentTodoId) {
+            if (todo.title !== trimmedTitle) {
+                todo.title = trimmedTitle
+                updateTodoTitle(currentTodoId)
             }
-        })
-        displayTodoSettings(priorityValue, dueDateValue, statusValue, activeTaskID)
-        saveChangesbtn.textContent = "Saving..."
-        setTimeout(() => {
-            saveChangesbtn.textContent = "Saved ✅"
-            setTimeout(() => {
-                saveChangesbtn.textContent = "Save changes"
-            }, 3000)
-        }, 1000)  
-        
+            todo.description = taskDescription
+            todo.priority = priorityValue
+            todo.duedate = dueDateValue
+            todo.status = statusValue
+        }
     })
-    
+    displayTodoSettings(priorityValue, dueDateValue, statusValue, activeTaskID)
+    saveChangesbtn.textContent = "Saving..."
+    setTimeout(() => {
+        saveChangesbtn.textContent = "Saved ✅"
+        setTimeout(() => {
+            saveChangesbtn.textContent = "Save changes"
+        }, 3000)
+    }, 1000)
+
 }
+
+// Save todo settings upon save button click
+document.addEventListener("click", (e) => {   
+    if (e.target.matches(".save-changes-btn")) {
+        updateUserSettings()
+    } 
+})
 
 // Remove the currently active task from storage
 function deleteTask() {
@@ -95,8 +99,5 @@ document.querySelector(".yes.btn").addEventListener("click", () => {
 document.querySelector(".no.btn").addEventListener("click", () => {
     confirmation(false)
 })
-
-
-updateUserSettings()
 
 getUserTask()

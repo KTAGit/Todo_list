@@ -79,6 +79,16 @@ export function removeDeletedTodo(deletedTodoID) {
 
 // Display or toggle the settings section for the selected todo
 export function displayTodoSettings(priority, duedate, status, taskID) {
+    if (duedate) {
+        const [year, month, day] = duedate.split("-")
+        const date = new Date(year, month - 1, day)
+        const formatted = date.toLocaleDateString("en-US", {
+            year: "2-digit",
+            month: "2-digit",
+            day: "numeric"
+        })
+        duedate = formatted.replace(/\//g, "-")
+    }
     
     const settingsData = ["📅 " + duedate, status, priority]
     const todoContainers = document.querySelectorAll(".todo-and-btn-container")

@@ -26,6 +26,8 @@ export function renderTask(id) {
             const descriptionContainer = document.querySelector(".task-description-container")
             const taskSettings = document.querySelector(".task-settings")
             const buttonContainer = document.querySelector(".btn-container")
+            const today = new Date().toISOString().split("T")[0];
+            document.querySelector("#task-duedate").min = today
             
             mainContainer.classList.add("show-third")
             taskSectionContainer.classList.add("show-task")

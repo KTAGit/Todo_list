@@ -9,6 +9,7 @@ import { activeProjectID } from "./projectController";
 import { renderTodos } from "../ui/renderTodo";
 import { displayTodoSettings } from "../ui/renderTodo";
 import { removeDeletedTodo } from "../ui/renderTodo";
+import { toggleCompleteIcon } from "../ui/renderTodo";
 
 // Tracks the currently selected Task ID and Title
 let activeTaskID = null
@@ -54,6 +55,15 @@ export function updateUserSettings() {
         }
     })
     displayTodoSettings(priorityValue, dueDateValue, statusValue, activeTaskID)
+    if( statusValue === "Completed" ){
+        if (document.querySelector(".todo-complete-btn").textContent !== "✓") {
+            toggleCompleteIcon(activeTaskID) 
+        }
+    }else if (statusValue !== "Completed") {
+        if (document.querySelector(".todo-complete-btn").textContent === "✓") {
+            toggleCompleteIcon(activeTaskID) 
+        }
+    } 
     saveChangesbtn.textContent = "Saving..."
     setTimeout(() => {
         saveChangesbtn.textContent = "Saved ✅"

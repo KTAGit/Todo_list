@@ -1,5 +1,5 @@
-export const projectStorage = []
-export const todoStorage = [] 
+export const projectStorage = loadProjectFromStorage()
+export const todoStorage = loadTodoFromStorage()
 
 
 // Create a project with a unique ID.
@@ -35,3 +35,24 @@ export function storeProject(project) {
 export function storeTodo(todo) {
     todoStorage.push(todo)
 }
+
+// Loads all project from localStorage.
+function loadProjectFromStorage() {
+    return JSON.parse(localStorage.getItem("project-data")) || []
+}
+
+// Loads all todos from localStorage.
+function loadTodoFromStorage() {
+    return JSON.parse(localStorage.getItem("todo-data")) || []
+}
+
+// Persists the entire project storage array to localStorage.
+export function saveProjectInStorage() {
+    localStorage.setItem("project-data", JSON.stringify(projectStorage))
+}
+
+// Persists the entire todo storage array to localStorage.
+export function saveTodoInStorage() {
+    localStorage.setItem("todo-data", JSON.stringify(todoStorage))
+}
+

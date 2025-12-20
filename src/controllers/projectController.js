@@ -7,7 +7,8 @@ import { hideTaskSection } from "../ui/renderTask";
 import { confirmation } from "../ui/renderTask";
 import { removeTodosByProjectId } from "./todoController";
 import { clearTodoContainer } from "../ui/renderTodo";
-
+import { saveProjectInStorage } from "../logic/logic";
+import { saveTodoInStorage } from "../logic/logic";
 
 // Set up the input handler: on click, create a new project, store it, 
 // and re-render the project list
@@ -20,6 +21,7 @@ function getUserInput() {
         storeProject(userProject)
         userInput.value = ""
         renderProjects()
+        saveProjectInStorage()
     })
 
     userInput.addEventListener("keypress", (e) => {
@@ -74,6 +76,8 @@ document.querySelector(".yes.btn").addEventListener("click", () => {
     clearTodoContainer()
     confirmation(false)
     isProjectToDelete = false
+    saveTodoInStorage()
+    saveProjectInStorage()
 })
 
 // Close confirmation dialog without deleting

@@ -6,6 +6,8 @@ import { todoStorage } from "../logic/logic";
 import { hideTaskSection } from "../ui/renderTask";
 import { toggleCompleteIcon } from "../ui/renderTodo";
 import { displayTodoSettings } from "../ui/renderTodo";
+import { saveTodoInStorage } from "../logic/logic";
+
 // Creates a new todo for a project and saves it to storage
 export function addTodoToStorage(projectID, text) {
     const newTodo = new TodoCreator(text);
@@ -23,6 +25,7 @@ document.querySelector(".task.Add-symbol").addEventListener("click", () => {
     addTodoToStorage(activeProjectID, trimmedInput);
     input.value = "";
     renderTodos(activeProjectID);
+    saveTodoInStorage()
 });
 
 // When the Enter key pressed trigger click to the add button

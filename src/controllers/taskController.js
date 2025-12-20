@@ -10,6 +10,8 @@ import { renderTodos } from "../ui/renderTodo";
 import { displayTodoSettings } from "../ui/renderTodo";
 import { removeDeletedTodo } from "../ui/renderTodo";
 import { toggleCompleteIcon } from "../ui/renderTodo";
+import { projectStorage } from "../logic/logic";
+import { saveTodoInStorage } from "../logic/logic";
 
 // Tracks the currently selected Task ID and Title
 let activeTaskID = null
@@ -78,6 +80,7 @@ export function updateUserSettings() {
 document.addEventListener("click", (e) => {   
     if (e.target.matches(".save-changes-btn")) {
         updateUserSettings()
+        saveTodoInStorage()
     } 
 })
 
@@ -95,12 +98,14 @@ document.querySelector(".delete-btn").addEventListener("click", () => {
     isTaskToDelete = true
 })
 
+
 // Delete the task and render all todos
 document.querySelector(".yes.btn").addEventListener("click", () => {
     if (!isTaskToDelete) return
     deleteTask()
     hideTaskSection()
     removeDeletedTodo(activeTaskID)
+    saveTodoInStorage()
     confirmation(false)
     isTaskToDelete = false
 })

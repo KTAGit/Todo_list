@@ -140,11 +140,10 @@ export function toggleCompleteIcon(id) {
     const todoContainer = document.querySelector(`.todo-and-btn-container[data-id="${id}"]`)
     if (!todoContainer) return
 
-    const completeIconContainer = todoContainer.querySelector(".todo-complete-btn")
-
-    const isCompleted = todoContainer.classList.toggle("completed");
-
-    completeIconContainer.textContent = isCompleted ? "✓" : "";
-    
+    if (todoContainer.querySelector(".todo-complete-btn").textContent === "") {
+        todoContainer.querySelector(".todo-complete-btn").textContent = "✓"
+    }else {
+        todoContainer.querySelector(".todo-complete-btn").textContent = ""
+    }
 }
 

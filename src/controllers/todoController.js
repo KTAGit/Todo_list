@@ -49,7 +49,7 @@ export function removeTodosByProjectId(deletedProjectID) {
 function changeTodoStatus(id){
     todoStorage.forEach(todo => {
         if (todo.id === id) {
-            if (!todo.status) {
+            if (todo.status !== "Completed") {
                 todo.status = "Completed"
                 displayTodoSettings(todo.priority, todo.duedate, todo.status, id)
             }else {

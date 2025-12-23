@@ -40,6 +40,7 @@ export function updateUserSettings() {
     const dueDateValue = document.querySelector("#task-duedate").value
     const statusValue = document.querySelector("#task-status").value
     const trimmedTitle = taskTitle.trim()
+    const todoContainer = document.querySelector(`.todo-and-btn-container[data-id="${activeTaskID}"]`)
     if (trimmedTitle.length === 0) {
         document.querySelector(".task-title").placeholder = "Title required!"
         return
@@ -58,14 +59,17 @@ export function updateUserSettings() {
     })
     displayTodoSettings(priorityValue, dueDateValue, statusValue, activeTaskID)
     if( statusValue === "Completed" ){
-        if (document.querySelector(".todo-complete-btn").textContent !== "✓") {
-            toggleCompleteIcon(activeTaskID) 
+        if (todoContainer.querySelector(".todo-complete-btn").textContent !== "✓") {
+            if (!todoContainer) return
+            todoContainer.querySelector(".todo-complete-btn").textContent = "✓"      
         }
-    }else if (statusValue !== "Completed") {
+    }else if (statusValue === "In Progress" || statusValue === "Not Started") {
         if (document.querySelector(".todo-complete-btn").textContent === "✓") {
-            toggleCompleteIcon(activeTaskID) 
+            if (!todoContainer) return
+            todoContainer.querySelector(".todo-complete-btn").textContent = ""
         }
-    } 
+    }
+    
     saveChangesbtn.textContent = "Saving..."
     setTimeout(() => {
         saveChangesbtn.textContent = "Saved ✅"
@@ -114,5 +118,7 @@ document.querySelector(".yes.btn").addEventListener("click", () => {
 document.querySelector(".no.btn").addEventListener("click", () => {
     confirmation(false)
 })
+
+
 
 getUserTask()

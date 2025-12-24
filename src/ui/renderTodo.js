@@ -159,12 +159,13 @@ export function toggleCompleteIcon(id) {
 // and updates their UI state (checkmark and settings)
 export function renderCompletedTodos(projectID) {
     const p = document.querySelector(".completed-todo-heading")
+    const border = document.querySelector(".completed-border")
     const completedTodoContainer = document.querySelector(".completed-todo-item-container")
     completedTodoContainer.innerHTML = ""
+    completedTodoContainer.appendChild(border)
     completedTodoContainer.appendChild(p)
     todoStorage.forEach(todo => {
         if (todo.projectID === projectID) {
-            
             if (todo.status === "Completed") {
                 const todoEl = createTodoContents(todo)
                 completedTodoContainer.appendChild(todoEl);
@@ -174,5 +175,13 @@ export function renderCompletedTodos(projectID) {
             }
         }
     })
+
+    if (completedTodoContainer.childElementCount > 2) {
+        border.style.display = "block"
+        p.style.display = "block"
+    }else {
+        border.style.display = "none"
+        p.style.display = "none"
+    }
 }
 

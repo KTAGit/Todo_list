@@ -28,6 +28,7 @@ function getUserInput() {
         storeProject(userProject)
         userInput.value = ""
         renderProjects()
+        saveProjectInStorage()
     })
 
     userInput.addEventListener("keypress", (e) => {

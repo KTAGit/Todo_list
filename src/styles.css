@@ -217,8 +217,14 @@ body {
     overflow-y: auto;
     scrollbar-width: thin; 
     scrollbar-color: #888 #79827265;
+
+    
+}
+
+.completed-border {
+    justify-self: center;
+    width: 90%;
     border-top: 1px solid #79827265;
-    margin-top: 30px;
 }
 
 .completed-todo-heading {

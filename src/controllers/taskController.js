@@ -27,7 +27,7 @@ export function getUserTask() {
         highlightTodo(todoEl.dataset.id)
         renderTask(todoEl.dataset.id)
         activeTaskID = todoEl.dataset.id
-        activeTaskTitle = todoEl.textContent 
+        activeTaskTitle = todoEl.querySelector(".todo-item").textContent 
     })
 }
 

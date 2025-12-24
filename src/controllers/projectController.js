@@ -9,6 +9,13 @@ import { removeTodosByProjectId } from "./todoController";
 import { clearTodoContainer } from "../ui/renderTodo";
 import { saveProjectInStorage } from "../logic/logic";
 import { saveTodoInStorage } from "../logic/logic";
+import { renderCompletedTodos } from "../ui/renderTodo";
+
+// Tracks the currently selected project ID
+export let activeProjectID = null
+let deleteProjectTitle = null
+let deleteProjectID = null
+let isProjectToDelete = null
 
 // Set up the input handler: on click, create a new project, store it, 
 // and re-render the project list
@@ -21,7 +28,6 @@ function getUserInput() {
         storeProject(userProject)
         userInput.value = ""
         renderProjects()
-        saveProjectInStorage()
     })
 
     userInput.addEventListener("keypress", (e) => {
@@ -31,12 +37,6 @@ function getUserInput() {
     })
 }
 
-// Tracks the currently selected project ID
-export let activeProjectID = null
-let deleteProjectTitle = null
-let deleteProjectID = null
-let isProjectToDelete = null
-
 // When a project is clicked, set it as active and render its todos
 document.addEventListener("click", e => {
     if (e.target.matches(".project-item")) {
@@ -44,6 +44,7 @@ document.addEventListener("click", e => {
         highlightProject(activeProjectID)
         hideTaskSection()
         renderTodos(activeProjectID);
+        renderCompletedTodos(activeProjectID)
     }
 });
 

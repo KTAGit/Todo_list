@@ -7,6 +7,7 @@ import { hideTaskSection } from "../ui/renderTask";
 import { toggleCompleteIcon } from "../ui/renderTodo";
 import { displayTodoSettings } from "../ui/renderTodo";
 import { saveTodoInStorage } from "../logic/logic";
+import { renderCompletedTodos } from "../ui/renderTodo";
 
 // Creates a new todo for a project and saves it to storage
 export function addTodoToStorage(projectID, text) {
@@ -66,5 +67,7 @@ document.addEventListener("click", (e) => {
     if (e.target.matches(".todo-complete-btn")) {
         toggleCompleteIcon(e.target.parentElement.dataset.id)
         changeTodoStatus(e.target.parentElement.dataset.id)
+        renderTodos(activeProjectID);
+        renderCompletedTodos(activeProjectID)
     }
 })

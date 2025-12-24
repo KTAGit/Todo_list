@@ -12,6 +12,7 @@ import { removeDeletedTodo } from "../ui/renderTodo";
 import { toggleCompleteIcon } from "../ui/renderTodo";
 import { projectStorage } from "../logic/logic";
 import { saveTodoInStorage } from "../logic/logic";
+import { renderCompletedTodos } from "../ui/renderTodo";
 
 // Tracks the currently selected Task ID and Title
 let activeTaskID = null
@@ -69,6 +70,8 @@ export function updateUserSettings() {
             todoContainer.querySelector(".todo-complete-btn").textContent = ""
         }
     }
+    renderTodos(activeProjectID)
+    renderCompletedTodos(activeProjectID)
     
     saveChangesbtn.textContent = "Saving..."
     setTimeout(() => {

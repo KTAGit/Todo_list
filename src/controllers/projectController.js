@@ -10,6 +10,8 @@ import { clearTodoContainer } from "../ui/renderTodo";
 import { saveProjectInStorage } from "../logic/logic";
 import { saveTodoInStorage } from "../logic/logic";
 import { renderCompletedTodos } from "../ui/renderTodo";
+import { hideSidebar } from "../ui/renderProject";
+import { showSidebar } from "../ui/renderProject";
 
 // Tracks the currently selected project ID
 export let activeProjectID = null
@@ -46,6 +48,7 @@ document.addEventListener("click", e => {
         hideTaskSection()
         renderTodos(activeProjectID);
         renderCompletedTodos(activeProjectID)
+        hideSidebar()
     }
 });
 
@@ -87,5 +90,30 @@ document.querySelector(".no.btn").addEventListener("click", () => {
     confirmation(false)
 })
 
+// Media query for mobile and smaller screens
+const mobile = window.matchMedia("(max-width: 1400px)")
+// Media query for desktop screens
+const desktop = window.matchMedia("(min-width: 1401px)")
+
+// When the screen switches to mobile size, hide the sidebar
+mobile.addEventListener("change", e => {
+    if (e.matches) {
+        console.log("MATCH MOBILE")
+        hideSidebar()
+    }
+})
+
+// When the screen switches to desktop size, show the sidebar
+desktop.addEventListener("change", e => {
+    if (e.matches) {
+        console.log("MATCH DESKTOP")
+        showSidebar()
+    }
+})
+
+// Show the sidebar when the hamburger menu is clicked (mobile)
+document.querySelector(".hamburger-menu").addEventListener("click", () => {
+    showSidebar()
+})
 
 getUserInput()

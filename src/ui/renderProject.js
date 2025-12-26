@@ -40,4 +40,16 @@ export function highlightProject(id) {
     })
 }
 
+// Displays the left sidebar
+export function showSidebar() {
+    const mainSidebar = document.querySelector(".sidebar.sidebar--left")
+    mainSidebar.style.display = "block"
+}
+
+// Hides the left sidebar
+export function hideSidebar() {
+    const mainSidebar = document.querySelector(".sidebar.sidebar--left")
+    mainSidebar.style.display = "none"
+}
+
 renderProjects()

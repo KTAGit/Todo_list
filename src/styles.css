@@ -217,8 +217,6 @@ body {
     overflow-y: auto;
     scrollbar-width: thin; 
     scrollbar-color: #888 #79827265;
-
-    
 }
 
 .completed-border {
@@ -579,4 +577,159 @@ body {
     background-color: #242424;
     border-radius: 15px;
     align-items: center;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.task-arrow {
+    display: none;
+}
+
+@media (max-width:1400px) {
+    body {
+        font-size: 1.5rem;
+    }
+
+    .main-container {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
+    .sidebar.sidebar--left {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        width: 97%;
+        min-height: 60%;
+        top: 80px;
+    }
+
+    .show-sidebar {
+        display: block;
+    }
+
+    .sidebar-title {
+        display: none;
+    }
+
+    .main.todo-title-container {
+        padding-left: 23px;
+    }
+
+    .main.todo-title {
+        margin-top: 29px;
+        margin-left: 10px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-self: center;
+    }
+
+    .hamburger-menu:hover {
+        cursor: pointer;
+    }
+
+    .hamburger-menu > div {
+        width: 35px;
+        height: 5px;
+        background-color:#798272;
+        border-radius: 5px;
+    }
+
+    .chevron-right {
+        display: none;
+    }
+
+    .todo-settings-container {
+        width: 100%;
+    }
+
+    .todo-item {
+        font-size: 1.0rem;
+    }
+
+    .todo-settings-container > .setting {
+        width: 100%;
+        font-size: .8rem;
+    }
+
+    .todo-settings-container > :nth-child(2) {
+        padding-left: 5px;
+        text-indent: 10px;
+    }
+
+    .todo-settings-container > :nth-child(3) {
+        padding-left: 5px;
+        text-indent: 10px;
+    }
+
+    .confirmation-popup {
+        width: 95%;
+    }
+
+    .task-section-container {
+        position: fixed;
+        min-height: 70%;
+        width: 97%;
+        bottom: 0;
+    }
+
+    .task-header {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    .task-arrow {
+        display: flex;
+        line-height: 1;
+        justify-self: center;
+        width: 200px;
+        height: 30px;
+        text-align: center;
+        color: black;
+        padding: 0;
+        margin: 0;
+        font-size: clamp(1.2rem, 3vw, 2.5rem);
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .task-arrow:hover {
+        cursor: pointer;
+    }
+
+    .task-arrow > :nth-child(1) {
+        color: #798272;
+        transform: rotate(-50deg);
+        width: 20px;
+        font-size: 35px;
+        font-weight: bolder;
+    }
+
+    .task-arrow > :nth-child(2) {
+        color: #798272;
+        transform: rotate(50deg);
+        width: 20px;
+        font-size: 35px;
+        font-weight: bolder;
+    }
+}
+
+@media (max-width: 390px) {
+
+    .chevron-right {
+        display: none;
+    }
+
+    .todo-settings-container > .setting {
+        width: 100%;
+        font-size: .7rem;
+    }
 }

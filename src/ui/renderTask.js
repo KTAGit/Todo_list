@@ -28,7 +28,7 @@ export function renderTask(id) {
             const buttonContainer = document.querySelector(".btn-container")
             const today = new Date().toISOString().split("T")[0];
             document.querySelector("#task-duedate").min = today
-            
+
             mainContainer.classList.add("show-third")
             taskSectionContainer.classList.add("show-task")
             taskSectionContainer.dataset.id = id
@@ -83,3 +83,7 @@ export function confirmation(show, item = ""){
     }
 }
 
+// Hides the task section when the arrow is clicked 
+document.querySelector(".task-arrow").addEventListener("click", () => {
+    hideTaskSection()
+})

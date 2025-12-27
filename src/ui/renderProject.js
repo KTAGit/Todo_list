@@ -1,4 +1,7 @@
 import { projectStorage } from "../logic/logic";
+import { device } from "../controllers/projectController";
+import { saveProjectInStorage } from "../logic/logic";
+import { ProjectCreator } from "../logic/logic";
 
 
 // Create and return a project <div> element with the appropriate class and text content.
@@ -40,10 +43,19 @@ export function highlightProject(id) {
     })
 }
 
+
+// toggles the left sidebar
+export function toggleSidebar() {
+    const mainSidebar = document.querySelector(".sidebar.sidebar--left")
+    const isHidden = getComputedStyle(mainSidebar).display === "none"
+    
+    mainSidebar.style.display = isHidden ? "block" : "none";
+}
+
 // Displays the left sidebar
 export function showSidebar() {
-    const mainSidebar = document.querySelector(".sidebar.sidebar--left")
-    mainSidebar.style.display = "block"
+    const mainSidebar = document.querySelector(".sidebar.sidebar--left");
+    mainSidebar.style.display = "block";
 }
 
 // Hides the left sidebar
@@ -52,4 +64,18 @@ export function hideSidebar() {
     mainSidebar.style.display = "none"
 }
 
+// Render all projects to the UI
 renderProjects()
+
+// Select the first project after rendering (initial active project)
+const firstProject = document.querySelector(".project-item-container").querySelector(".project-item")
+
+// Trigger selection only if a project exists
+if (firstProject) {firstProject.click()}
+
+
+
+
+
+
+

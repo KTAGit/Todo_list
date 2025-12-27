@@ -56,3 +56,9 @@ export function saveTodoInStorage() {
     localStorage.setItem("todo-data", JSON.stringify(todoStorage))
 }
 
+// Create a default project only when no projects exist (first app load)
+if (projectStorage.length === 0) { 
+    projectStorage.push(new ProjectCreator("Default Project"))
+    saveProjectInStorage()
+}
+

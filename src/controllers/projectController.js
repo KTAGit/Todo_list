@@ -1,6 +1,6 @@
 import { ProjectCreator, projectStorage } from "../logic/logic";
 import { storeProject } from "../logic/logic";
-import { renderProjects } from "../ui/renderProject";
+import { renderProjects, toggleSidebar } from "../ui/renderProject";
 import { renderTodos } from "../ui/renderTodo";
 import { highlightProject } from "../ui/renderProject";
 import { hideTaskSection } from "../ui/renderTask";
@@ -18,6 +18,9 @@ export let activeProjectID = null
 let deleteProjectTitle = null
 let deleteProjectID = null
 let isProjectToDelete = null
+
+// Keep tack of screen size 
+export let device = null
 
 // Set up the input handler: on click, create a new project, store it, 
 // and re-render the project list
@@ -48,7 +51,7 @@ document.addEventListener("click", e => {
         hideTaskSection()
         renderTodos(activeProjectID);
         renderCompletedTodos(activeProjectID)
-        hideSidebar()
+        if (device === "mobile") {hideSidebar()}
     }
 });
 
@@ -94,11 +97,14 @@ document.querySelector(".no.btn").addEventListener("click", () => {
 const mobile = window.matchMedia("(max-width: 1400px)")
 // Media query for desktop screens
 const desktop = window.matchMedia("(min-width: 1401px)")
+// Set the initial device based on the current screen width
+device = mobile.matches ? "mobile" : "desktop"
+
 
 // When the screen switches to mobile size, hide the sidebar
 mobile.addEventListener("change", e => {
     if (e.matches) {
-        console.log("MATCH MOBILE")
+        device = "mobile"
         hideSidebar()
     }
 })
@@ -106,14 +112,16 @@ mobile.addEventListener("change", e => {
 // When the screen switches to desktop size, show the sidebar
 desktop.addEventListener("change", e => {
     if (e.matches) {
-        console.log("MATCH DESKTOP")
+        device = "desktop"
         showSidebar()
     }
 })
 
 // Show the sidebar when the hamburger menu is clicked (mobile)
 document.querySelector(".hamburger-menu").addEventListener("click", () => {
-    showSidebar()
+    toggleSidebar()
+    hideTaskSection()
 })
+
 
 getUserInput()

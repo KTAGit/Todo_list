@@ -699,8 +699,9 @@ body {
     .task-section-container {
         position: fixed;
         min-height: 70%;
-        width: 97%;
+        width: 87%;
         bottom: 0;
+        justify-self: center;
     }
 
     .task-header {
@@ -743,6 +744,18 @@ body {
         width: 20px;
         font-size: 35px;
         font-weight: bolder;
+    }
+
+    .task.priority-container {
+        width: 92%;
+    }
+
+    .task.duedate-container {
+        width: 92%;
+    }
+
+    .task.status-container {
+        width: 92%;
     }
 }
 

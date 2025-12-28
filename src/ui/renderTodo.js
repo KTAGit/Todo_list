@@ -114,7 +114,7 @@ export function displayTodoSettings(priority, duedate, status, taskID) {
         }
 
         settings.innerHTML = "";
-
+        settings.style.display = "none"
         settingsData.forEach(data => {
             if (!data || data === "📅 " || data === "📅 " + undefined) return;
 
@@ -131,6 +131,7 @@ export function displayTodoSettings(priority, duedate, status, taskID) {
 
             settings.appendChild(item);
         });
+        if (settings.innerHTML !== "") {settings.style.display = "flex"}
     });
 }
 

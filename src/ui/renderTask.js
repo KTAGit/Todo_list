@@ -74,7 +74,7 @@ export function confirmation(show, item = ""){
     const text = document.querySelector(".text-content")
     const overlay = document.querySelector(".overlay-off")
     if (show) {
-        text.textContent = `Are you sure you want to delete\n${item} ?`
+        text.textContent = `Are you sure you want to delete\n"${item}"?`
         overlay.classList.add("overlay")
         popup.classList.add("confirmation")
     }else {

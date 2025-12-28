@@ -72,6 +72,7 @@ export function updateUserSettings() {
     }
     renderTodos(activeProjectID)
     renderCompletedTodos(activeProjectID)
+    highlightTodo(activeTaskID)
     
     saveChangesbtn.textContent = "Saving..."
     setTimeout(() => {

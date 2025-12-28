@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+<script defer src="./main.js"></script></head>
+<body>
+    <div class="main-container"> 
+        <section class="sidebar sidebar--left">
+            <div class="sidebar title-container">
+                <h2 class="sidebar-title">Menu</h2>
+            </div>
+
+            <div class="sidebar project-container">
+                <h4 class="sidebar project-title">Projects</h4>
+                <div class="project-input-container"> 
+                    <div class="project Add-symbol">+</div>
+                    <input class="sidebar project-input" type="text" placeholder="Add New Project">
+                </div>
+                <div class="project-item-container" >
+                    
+                </div>
+                
+            </div>
+        </section>
+
+        <section class="main todo-section-container" >
+            <div class="main todo-title-container">
+                <div class="hamburger-menu">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <h1 class="main todo-title"></h1> 
+            </div>
+
+            <div class="main todo-list-container">
+                <div class="input-container">
+                    <div class="task Add-symbol">+</div>
+                    <input type="text" class="todo-input" placeholder="Add New Todo">
+                </div>
+            </div>
+            <div class="todo-item-container">
+
+
+            </div>
+
+            <div class="completed-todo-item-container">
+                <div class="completed-border" style="display: none;"></div>
+                <p class="completed-todo-heading" style="display: none;"><i>Completed Todos</i></p>
+            </div>
+        </section>
+
+        <section class="task-section-container">
+            <div class="task-header-container">
+                <div class="task-arrow">
+                    <div>|</div>
+                    <div>|</div>
+                </div>
+                <h2 class="task-header">Task:</h2>
+            </div>
+
+            <div class="task-content-container">
+
+                <div class="task-title-container" ></div>
+                <div class="task-description-container"></div>
+
+            </div>
+
+            <div class="task-settings">
+
+                <div class="task priority-container" >
+                    <div class="label-container">
+                        <label for="priority" class="label">Priority</label>
+                    </div>
+                    
+                    <select name="priority" id="task-priority">
+                        <option value="High">High Priority</option>
+                        <option value="Medium">Medium Priority</option>
+                        <option value="Low">Low Priority</option>
+                    </select>
+                    
+                </div>
+
+                <div class="task duedate-container">
+                    <div class="label-container">
+                        <label for="date-field-name" class="label">Due date</label>
+                    </div>
+                    
+                    <input type="date" name="date-field-name" id="task-duedate">
+
+                </div>
+
+                <div class="task status-container">
+                    <div class="label-container">
+                        <label for="Status" class="label">Status</label>
+                    </div>
+                    
+                    <select name="Status" id="task-status">
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                    
+                </div>
+
+                
+            </div>
+
+            <div class="btn-container">
+                <button class="delete-btn">Delete Task</button>
+                <button class="save-changes-btn">Save changes</button>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="overlay-off">
+        <div class="confirmation-popup">
+            <p class="text-content"></p>
+            <div class="button-container">
+                <button class="yes btn">Yes</button>
+                <button class="no btn">No</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

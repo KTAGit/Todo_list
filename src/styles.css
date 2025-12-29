@@ -1,11 +1,11 @@
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100dvh;
     background-color: #161616;
 }
 
 .main-container {
-    height: 100vh;
+    height: 100dvh;
     width: 97%;
     display: grid;
     grid-template-columns: minmax(350px, .5fr) 2fr;
@@ -20,7 +20,7 @@ body {
 .sidebar.sidebar--left {
     align-self: center;
     background-color: #1C1C1C;
-    min-height: 96vh;
+    min-height: 96dvh;
     border-radius: 20px;
 }
 
@@ -191,7 +191,7 @@ body {
 
 .todo-item-container {
     width: 100%;
-    max-height: 35vh;
+    max-height: 35dvh;
     overflow-y: auto;
     scrollbar-width: thin; 
     scrollbar-color: #888 #79827265;
@@ -215,7 +215,7 @@ body {
 
 .completed-todo-item-container {
     width: 100%;
-    max-height: 30vh;
+    max-height: 30dvh;
     overflow-y: auto;
     scrollbar-width: thin; 
     scrollbar-color: #888 #79827265;
@@ -323,7 +323,7 @@ body {
     display: none;
     background-color: #1C1C1C;
     align-self: center;
-    min-height: 96vh;
+    min-height: 96dvh;
     border-radius: 20px;
     flex-direction: column;
 }
@@ -590,7 +590,7 @@ body {
 
 @media (max-width:1400px) {
     body {
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
     }
 
     .main-container {
@@ -603,13 +603,9 @@ body {
         flex-direction: column;
         position: fixed;
         width: 90%;
-        min-height: 60%;
+        min-height: 60dvh;
         top: 80px;
         justify-self: center;
-    }
-
-    .show-sidebar {
-        display: block;
     }
 
     .sidebar-title {
@@ -698,7 +694,7 @@ body {
 
     .task-section-container {
         position: fixed;
-        min-height: 70%;
+        min-height: 70dvh;
         width: 87%;
         bottom: 0;
         justify-self: center;
@@ -713,7 +709,8 @@ body {
         display: flex;
         line-height: 1;
         justify-self: center;
-        width: 200px;
+        max-width: 90%;
+        width: fit-content;
         height: 30px;
         text-align: center;
         color: black;
